@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/My Assets/Scenes/Title.unity
+    guid: 98672c196cb0cfc4480edbab2d8b38a7
+  - enabled: 1
+    path: Assets/My Assets/Scenes/Hub area.unity
+    guid: ea33dd6c9ac3d9d41bd3da8ced485b4f
+  - enabled: 1
+    path: Assets/My Assets/Scenes/Desert dungeon.unity
+    guid: ff355b3dfa2e617499eff3cf4cb215d9
   m_configObjects: {}
