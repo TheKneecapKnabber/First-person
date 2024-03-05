@@ -6,12 +6,13 @@ using UnityEngine;
 public class IteractiveObject : MonoBehaviour
 {
     private string _selectTag = "InteractiveObject";
-    public Material highlightMaterial;
+    //public Material highlightMaterial;
+
     private bool _isHighlighted = false;
 
     private Transform _selection;
 
-    public TMP_Text _nameDisplay;
+    public TMP_Text nameDisplay;
 
     public float distanceFromItem = 3f;
 
@@ -19,6 +20,7 @@ public class IteractiveObject : MonoBehaviour
     {
         if (_selection != null)
         {
+            nameDisplay.text = "";
             _isHighlighted = false;
             Renderer selectionRenderer = _selection.GetComponent<Renderer>();
             selectionRenderer.material.DisableKeyword("_EMISSION");
@@ -29,9 +31,24 @@ public class IteractiveObject : MonoBehaviour
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * distanceFromItem, Color.red);
+
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, distanceFromItem))
         {
-            Debug.Log("test");
+            //Debug.Log("test"); ***(this was just for testing)***
+
+            var selection = hit.transform;
+
+            if (selection.CompareTag(_selectTag))
+            {
+                if(selection!= _isHighlighted)
+                {
+                    _isHighlighted = true;
+                    selection.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+                    nameDisplay.text = selection.gameObject.name; 
+                }
+                _selection = selection;
+            }
         }
     }
     
