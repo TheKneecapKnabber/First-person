@@ -2,19 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class IteractiveObject : MonoBehaviour
 {
-    private string _selectTag = "InteractiveObject";
-    //public Material highlightMaterial;
-
+    
+    //Selection default
+    private string _selectTag;
     private bool _isHighlighted = false;
-
     private Transform _selection;
-
     public TMP_Text nameDisplay;
-
     public float distanceFromItem = 3f;
+
+    //Lever Stuffs
+    public Animator LeverAnimator;
+    public GameObject doorText;
+    public bool hasKey = false; 
+    private bool _isDown = false;
+
 
     private void Update()
     {
@@ -39,7 +44,7 @@ public class IteractiveObject : MonoBehaviour
 
             var selection = hit.transform;
 
-            if (selection.CompareTag(_selectTag))
+            if (selection.CompareTag("InteractiveObject") || selection.CompareTag("Lever"))
             {
                 if(selection!= _isHighlighted)
                 {
@@ -50,6 +55,52 @@ public class IteractiveObject : MonoBehaviour
                 _selection = selection;
             }
         }
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            LeverInteraction(); 
+        }
     }
-    
+
+    void LeverInteraction()
+    {
+        RaycastHit hitInfo;
+
+        Vector2 mouseposition = Mouse.current.position.ReadValue();
+
+        Ray rayOrigin = Camera.main.ScreenPointToRay(mouseposition);
+
+        if(Physics.Raycast(rayOrigin,out hitInfo, distanceFromItem))
+        {
+            var selection = hitInfo.transform;
+            if(!hasKey)
+            {
+                doorText.SetActive(true);
+                Invoke("DisableText", 2f);
+            }
+            else            
+            {
+                if(selection.gameObject.tag == "Lever")
+                {
+                    if (!_isDown)
+                    {
+
+                        LeverAnimator.SetTrigger("Down");
+                        LeverAnimator.ResetTrigger("Up");
+                        _isDown = true;
+                    }
+                    else
+                    {
+                        LeverAnimator.SetTrigger("Up");
+                        LeverAnimator.ResetTrigger("Down");
+                        _isDown = false;
+                    }
+
+                }
+            }
+        }
+    }
+    void DisableText() 
+    {
+        doorText.SetActive(false);
+    }
 }

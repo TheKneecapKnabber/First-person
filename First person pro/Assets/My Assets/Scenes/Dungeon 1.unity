@@ -1379,7 +1379,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh64846
+  m_Name: pb_Mesh30218
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1707,7 +1707,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-205806
+  m_Name: pb_Mesh-5224
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -49747,18 +49747,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brazier
       objectReference: {fileID: 0}
+    - target: {fileID: 1852206317405519785, guid: a0d5411bad2f1fb4693d866d6a2a26ff, type: 3}
+      propertyPath: NoiseModule.separateAxes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852206317405519785, guid: a0d5411bad2f1fb4693d866d6a2a26ff, type: 3}
+      propertyPath: NoiseModule.strength.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852206317405519785, guid: a0d5411bad2f1fb4693d866d6a2a26ff, type: 3}
+      propertyPath: NoiseModule.strengthZ.scalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4076123243358198903, guid: a0d5411bad2f1fb4693d866d6a2a26ff, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 123970874}
     - target: {fileID: 5413402045972449477, guid: a0d5411bad2f1fb4693d866d6a2a26ff, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5449892836348464575, guid: a0d5411bad2f1fb4693d866d6a2a26ff, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 123970874}
+    - target: {fileID: 7186828866164486055, guid: a0d5411bad2f1fb4693d866d6a2a26ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8397928945282320405, guid: a0d5411bad2f1fb4693d866d6a2a26ff, type: 3}
       propertyPath: m_Mesh
       value: 
