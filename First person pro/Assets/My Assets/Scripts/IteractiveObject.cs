@@ -39,11 +39,14 @@ public class IteractiveObject : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, distanceFromItem))
         {
             //Debug.Log("test"); ***(this was just for testing)***
+            Debug.Log("Hit detected");
 
             var selection = hit.transform;
 
             if (selection.GetComponent<Interactable>() != null)
             {
+                Debug.Log("Found an interactable: " + selection.GetComponent<Interactable>().name);
+                
                 selection.GetComponent<Interactable>().ShowItemInteractable();
             }
 
